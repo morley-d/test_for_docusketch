@@ -29,4 +29,4 @@ while True:
         except requests.exceptions.RequestException as e:
             print('Ошибка при отправке запроса на API:', e)
 
-    time.sleep(60)  # Проверяйть каждую минуту
+    time.sleep(60)  # Проверять каждую минуту
