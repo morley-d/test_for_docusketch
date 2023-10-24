@@ -11,7 +11,7 @@ services:
 
   python-app:
     build:
-      context: ./app  # Путь к директории с Python-приложением
+      context: .  # Путь к директории с Python-приложением
     container_name: my-python-app
     ports:
       - "8080:8080"
