@@ -8,6 +8,10 @@ db = client['my_database']
 collection = db['my_collection']
 
 
+@app.route('/', methods=['GET'])
+def core():
+    return "Hello, world!", 200
+
 @app.route('/create', methods=['POST'])
 def create():
     data = request.get_json()
@@ -52,4 +56,4 @@ def read(key):
 
 
 if __name__ == '__main__':
-    app.run(port=8080)
+    app.run(port=8088, host="0.0.0.0")

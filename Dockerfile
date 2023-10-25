@@ -1,15 +1,11 @@
 FROM python:3.10-slim
 
-ENV PYTHONBUFFERED 1
-
-COPY . /app
-
 WORKDIR /app
 
 COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python"]
+COPY flask_app.py .
 
-CMD ["flask_app.py"]
+CMD ["python", "flask_app.py"]
