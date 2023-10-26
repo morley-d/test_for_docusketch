@@ -9,8 +9,9 @@ collection = db['my_collection']
 
 
 @app.route('/', methods=['GET'])
-def core():
+def start():
     return "Hello, world!", 200
+
 
 @app.route('/create', methods=['POST'])
 def create():
