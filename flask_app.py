@@ -12,6 +12,16 @@ def start():
     return "Hello, world!", 200
 
 
+@app.route('/read/<int:key>', methods=['GET'])
+def read(key):
+    data = db.testdb.find_one({'key': key})
+
+    if data:
+        return jsonify({'key': data['key'], 'value': data['value']}), 200
+    else:
+        return jsonify({'message': 'Key not found'}), 404
+
+
 @app.route('/create', methods=['POST'])
 def create():
     data = request.get_json()
@@ -47,15 +57,5 @@ def update(key):
         return jsonify({'message': 'Invalid data'}), 400
 
 
-@app.route('/read/<key>', methods=['GET'])
-def read(key):
-    data = db.testdb.find_one({'key': key})
-
-    if data:
-        return jsonify({'key': data['key'], 'value': data['value']}), 200
-    else:
-        return jsonify({'message': 'Key not found'}), 404
-
-
 if __name__ == '__main__':
-    app.run(port=5050, host="0.0.0.0")
+    app.run(port=8080, host="0.0.0.0")
