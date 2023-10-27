@@ -17,3 +17,5 @@ services:
       - "8080:8080"
     depends_on:
       - mongodb
+    environment:
+      MONGO_URI: mongodb://user_name:user_password@mongodb:27017/mydb

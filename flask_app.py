@@ -1,15 +1,14 @@
+import os
 from flask import Flask, request, jsonify
 from pymongo import MongoClient
 
+
+MONGO_URI = os.environ['MONGO_URI']
+
 app = Flask(__name__)
 
-client = MongoClient('mongodb://user_name:user_password@mongodb:27017/mydb', authSource="admin")
+client = MongoClient(MONGO_URI, authSource="admin")
 db = client.mydb
-
-
-@app.route('/', methods=['GET'])
-def start():
-    return "Hello, world!", 200
 
 
 @app.route('/read/<int:key>', methods=['GET'])
