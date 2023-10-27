@@ -29,7 +29,6 @@ def create():
     value = data.get('value')
 
     if key and value:
-        # existing_data = collection.find_one({'key': key})
         existing_data = db.testdb.find_one({'key': key})
         if existing_data:
             return jsonify({'message': 'Key already exists'}), 400
@@ -40,13 +39,12 @@ def create():
         return jsonify({'message': 'Invalid data'}), 400
 
 
-@app.route('/update/<key>', methods=['PUT'])
+@app.route('/update/<int:key>', methods=['PUT'])
 def update(key):
     data = request.get_json()
     new_value = data.get('new_value')
 
     if key and new_value:
-        # existing_data = collection.find_one({'key': key})
         existing_data = db.testdb.find_one({'key': key})
         if existing_data:
             db.testdb.update_one({'key': key}, {'$set': {'value': new_value}})
