@@ -6,7 +6,7 @@ import time
 api_url = 'https://example.com/api'
 
 # Установите порог потребления памяти, при котором будет генерироваться alarm
-memory_threshold = 80  # Пример: 80% используемой памяти
+memory_threshold = 80
 
 while True:
     memory_percent = psutil.virtual_memory().percent
