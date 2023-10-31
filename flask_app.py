@@ -3,6 +3,7 @@ from flask import Flask, request, jsonify
 from pymongo import MongoClient
 
 
+# переменная задаётся через yaml файл
 MONGO_URI = os.environ['MONGO_URI']
 
 app = Flask(__name__)
